@@ -1,0 +1,38 @@
+Why we need design pattern 
+
+- គេជួបបញ្ហា ច្រើនមកហើយ ចឹងបានគេបង្កើត Design Pattern មកដោះស្រាយវា គេហៅថា Proving solution 
+
+- Proving solution (បញ្ហានឹង ត្រូវបានគេធ្វើពិសោធន៍ដោះស្រាយវារួចរាល់ហើយ)
+
+- SOLIT : វាធ្វើអោយយើងដឹងអំពី បញ្ហា តែវាមិនមានដំណោះស្រាយទេ
+
+==> Design pattern នឹងវាជាដំណោះស្រាយដែលគេបានពិសោធន៍ហើយ = proven solution for recurring (បញ្ហាដែលកើតឡើង ដដែរៗ នឹង) design problems. 
+
+
+Ex1: ការបង់ប្រាក់តាម ABA, Aclida, VBBank 
+
+Many algorithms, One selected at runtime ( ការបង់យើងអាចបង់បានតាមរយៈជាច្រើន តែពេលយើងធ្វើការ បងនឹង យើងធ្វើការជ្រើសរើសតែមួយទេ)
+
+ABA or AC ==> we use Strategy Pattern 
+
+Ex2: ការបញ្ចុះតម្លៃតាមរយៈ Member ship :Gold, silver, diamon 
+
+Ex3: Notification : send tam email, sms, line, telegram  
+
+Ex4: shipping fee (delivery with car, motor, ven, express)
+
+==> យើងសង្កេតឃើញថា វាជា Same Structure but difference behavior 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

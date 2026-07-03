@@ -14,6 +14,7 @@ import com.piseth.solid.s_srp.good.WelcomeEmailSender;
 public class Main {
 
     public static void main(String[] args) {
+    	
         UserService userService = new UserService(
                 new UserRegisterValidator(),
                 new UserMapper(),
@@ -23,5 +24,17 @@ public class Main {
         );
 
         userService.register(new UserRegisterRequest("Piseth", "piseth@example.com"));
-    }
+/*
+    	//OCP Called     	   
+        DiscountCalculator calculator = new DiscountCalculator(List.of(
+        		new GoldDiscountPolicy(),
+        		new SilverDiscountPolicy(),
+        		new DiamondDiscountPolicy()
+        		));
+        
+        BigDecimal discountAmount = calculator.calculate("DIAMOND",BigDecimal.valueOf(100));   
+        System.out.println("Afster discount: " + discountAmount);
+*/
+    }  
+
 }

@@ -1,0 +1,206 @@
+- SOLID : បើយើងអត់យល់ solid principle ទេ វានឹង យើងនឹងមិនចេះប្រើប្រាស់ Design Pattern ទេ
+==> SOLID is the basic of design pattern 
+
+SOLID is a set of 5 object-oriented design principles introduced by Robert C. Martin.
+
+គោលដៅសំខាន់គឺ៖
+
+The goal is to create code that is:
+
+• Easy to understand
+• Easy to change
+• Easy to test
+• Flexible
+• Maintainable
+
+
+1- SRP : Single Responsibility Principle : ទំនួលខុសត្រូវតែមួយ (មានហេតុផងតែមួយទេ)
+
+class នឹងគួរតែមានហេតុផលតែមួយទេ ដើម្បីធ្វើការផ្លាស់ប្តូរ 
+
+A class should have only one reason to change
+
+Ex: Print() when we need print we go to change this class 
+
+វាអាចធ្វើការបានច្រើនតែ ក្នុងហេតុផលតែមួយ
+
+==> A class should be responsible for one business responsibility.
+
+==> Solution : we create component to handle each this case 
+
+
+2- O : Open Closed Principle (OCP)
+-  បើអោយគេ extension (បើ​ អោយគេបន្ថែម feature បាន)
+- មិនមិនអោយគេធ្វើការកែប្រែ
+
+យើងបន្ថែម new behavior ហើយវាមិនទៅកែកូដចាស់ You should add new behavior without changing existing code.
+
+Example:
+
+public BigDecimal calculateDiscount(String customerType, BigDecimal amount) {
+		if ("SILVER".equals(customerType)) {
+			return amount.multiply(BigDecimal.valueOf(0.05));
+		}
+		if ("GOLD".equals(customerType)) {
+			return amount.multiply(BigDecimal.valueOf(0.10));
+		}
+		if ("PLATINUM".equals(customerType)) {
+			return amount.multiply(BigDecimal.valueOf(0.15));
+		}
+		return BigDecimal.ZERO;
+	}
+
+- ចឹងបើគេចង់បន្ថែម ប្រភេទ ថ្មីមួយទៀត Diamond ចឹងយើងមិនត្រូវមកធ្វើការកែប្រែ កូដនឹង (Violation of OCP)
+
+ចឹងដើម្បីដោយស្រាយបញ្ហានឹងគេបង្កើត pattern មកមានដូចជា៖
+
+Design Patterns Related
+• Strategy Pattern
+• Factory Pattern
+• Template Method Pattern
+				
+
+exist largely because of OCP.
+
+3- L = Liskov Substitution Principle (LSP)
+
+- Substitution ការផ្លាស់ប្តូរ
+
+អា subclass គួរតែអាចជំនួស base class ដោយមិនមានបង្ហាអ្វីទាំងអស់
+
+A subclass should be able to replace its parent without breaking behavior
+
+class Bird {
+void fly() {
+}
+}
+class Penguin extends Bird {
+}
+Problem:
+Penguins cannot fly.
+
+យើងយក Penguins អោយវា extend from Birt តែ Penguins វាមិនចេះហោះទេ ចឹងវាខុស logic 
+
+តែបើការសរសេរដូត គឺវាខុសសាច់រឿង
+
+==> Solution  យើងបង្កើត interface មួយមកដែលសម្រាប់អោយវាសម្រាប់តែ បក្សីណាដែលវាចេះហេះ ហើយ FlyingBrid it exten from birth 
+
+interface Bird {
+
+}
+
+interface FlyingBird extends Bird {
+void fly();
+}
+
+class Eagle implements FlyingBird {
+}
+
+
+class Penguin implements Bird {
+}
+Now behavior is correct.
+
+extend ហើយ extend ទៀតទៅ 
+
+
+យើងប្រើ OOP : Polimophysim 
+
+Example 
+
+* PaymentService (base class)
+
+CreditCardPaymentService បង់លុយតាម card យើងអាចធ្វើការ extend from PaymentService
+
+តែក្នុងករណីធ្វើការបង់លុយជាសាច់ប្រាក់
+
+CashPaymentService ==> If CashPaymentService throws
+
+subclass គួរតែជំនួស Base class វាបាន
+
+4- I = Interface Segregation Principle (ISP)
+
+Clients should not depend on methods they don't use. Clientsមិនគួរពឹងផ្អែកទៅលើ Method ដែលវាអត់ប្រើនោះទេ
+
+បើមាន method ណាអត់ខុស មិនចាំបាច់វាមកទេ
+
+Bad Example
+public interface Worker {
+	void work();
+	void eat();
+	void sleep();
+	void drive(); // this one is not use with Worker
+}
+
+No need to put driver in the work 
+
+ចឹងយើងអាចបំបែកដូចនឹងផ្សេងគ្នាទៅ​ ចាំយើងធ្វើការ Implement វា
+
+Better Design
+interface Worker {
+void work();
+}
+interface Driver {
+void drive();
+}
+interface Eater {
+void eat();
+}
+Small focused interfaces.
+
+5- D = Dependency Inversion Principle (DIP) : សំខាន់ជាងគេ នៅក្នុង Framework នឹង
+
+Depend on abstractions, not concrete implementations.
+
+ពេលយើងប្រកាស់ Dependacny ឬប្រកាស់ field នៅក្នុង class ណាមួយនឹងយើង អត់ប្រើវាជា implementation ទេ គឺយើងប្រាស់ជា Interface 
+
+==> ដើម្បីអី ដើម្បីងាយស្រួល ធ្វើការផ្លាស់ប្តូរ
+
+
+Bad: 
+
+@Service
+public class OrderService {
+
+	private final MySqlOrderRepository repository =
+		new MySqlOrderRepository();
+	}
+
+OrderService is tightly coupled.
+
+ពេលដែលយើងប្រើប្រាស់ keyword new MySqlOrderRepository(); មានន័យថាយើងបង្កើត Object from this class ចឹងវាជា Concret implementation 
+==> គេហៅវាថា tight copuling 
+
+នៅក្នុង JPA: យើង Implementation from only the interface 
+ចឹងពេលដែលយើងប្រើប្រាស់អីមួយ យើង គ្រាន់តែ ដាក់ Method វាចូលទៅបានហើយ
+
+
+private final ProductRepository reposito
+
+
+---------------------------------
+
+@RequiredArgsConstructor
+public class CreateProductUseCase {
+private final ProductRepository repository;
+}
+This is DIP.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

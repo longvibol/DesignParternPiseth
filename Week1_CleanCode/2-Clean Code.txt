@@ -1,0 +1,362 @@
+1- Clean Code : is code that is easy to read, understand, maintain, test, and extend 
+វាជា កូដដែល ងាយស្រួល អាន, ស្រួល យល់ , ស្រួលថែទាំ, ស្រួលតេស្ត, និងស្រួលធ្វើការបន្ថែមមុនងារ
+
+បន្ទាប់មកពីរ បីខែ​ ក្រោយក៏អាច ធ្វើការ មើល និងអាចបានដែល
+
+-----------------------------------------
+
+2- Simple Definition : វាជាកូដដែលបង្ហាញពីវាខ្លួនវាបានច្បាស់ និងងាយស្រួលធ្វើការពិនិត្យឡើងវិញ
+change without introducing bugs (វាអត់បង្ហាញបញ្ហាថ្មីនោះទេ)
+
+- ពេលដែលអ្នកផ្សេងមកមើលកូដយើង វាងាយស្រួលយល់ និងលឿនក្នុងការ ធ្វើ explanation. 
+- Name convention : ត្រូវធ្វើការដាក់ឈ្មោះអោយដូចនឹងច្បាស់របស់គេ
+
+3- លក្ខណៈដែលត្រូវមានសម្រាប់ Clean Code 
+
+3.1 - Meaningful Names : ដាក់ឈ្មោះអោយមានន័យគ្រប់គ្រាន់
+
+Ex: int daysSinceRegistration; 
+
+3.2 - Small Methods : គួរតែមានទំហំតូចសម្រាប់ការងារនីមួយៗ
+
+Bad:
+public void processOrder() {
+// 300 lines
+}
+
+កូដនឹងមានច្រើន បន្ទាប់ ហើយមានការងារច្រើន
+
+==> Better Code 
+
+public void processOrder() {
+validateOrder();
+reserveInventory();
+createPayment();
+sendNotification();
+}
+Each method has one responsibility.
+
+គោលបំណង់គឺធ្វើការ Validation so it re
+
+3.3 Single Responsibility Principle (SRP) ទំនួលខុសត្រូវតែមួយ
+
+Bad:
+
+public class UserService {
+
+	public void register(User user) {
+		validate(user);
+		saveToDatabase(user);
+		sendEmail(user);
+		generateReport(user);
+	}
+}
+
+នៅក្នុង UserService វាមានការទទួលខុសត្រូវច្រើន ដោយសារតែនៅក្នុង 
+
+validate(user); និងផ្សេងទៀត នឹង គេអាចធ្វើការ ហៅវាមកប្រើបានច្រើន បន្ទាប់ពីបង្កើត Object UserService ហើយ ចឹងវាមានតួនាទីច្រើនពេក
+
+==> Better Design 
+
+យើងធ្វើការបង្កើត​ class ផ្សេងសម្រាប់ each function ហើយធ្វើការហៅវាយក មកប្រើ
+
+Better:
+public class UserService {
+	private final UserValidator validator;
+	private final UserRepository repository;
+	private final EmailService emailService;
+
+
+	public void register(User user) {
+		validator.validate(user);
+		repository.save(user);
+	}
+}
+
+- private final UserValidator validator; វាជា  class ថ្មីដែលយើងបានបង្កើត ហើយហៅវាយកមកប្រើនៅក្នុង UserService 
+ចឹងយើងធ្វើការបង្កើតវា  component ផ្សេងៗគ្នា
+
+
+3-4 Avoid Duplicated Code យើងសរសេរ កូដ ដដែរៗ
+
+Example Bad:
+
+Validate to the user age: 
+
+if (user.getAge() < 18) {
+throw new IllegalArgumentException();
+}
+if (customer.getAge() < 18) {
+throw new IllegalArgumentException();
+}
+
+- it validate to the age of the user and customer (these both are the same valiation on the age) 
+==> we should create only one validation on the age 
+
+Good:
+private void validateAdult(int age) {
+if (age < 18) {
+throw new IllegalArgumentException();
+}
+}
+
+ចឹងយើងធ្វើការបង្កើត function មួយមកហើយធ្វើការ បោះ age នឹងចូល 
+
+	private void validateAdult(int age) {
+----
+	} 
+
+
+3-5: Proper Class Structure (layer separation) 
+
+Ex: UserController -> Repository (វាគួរតែត្រូវធ្វើការឆ្លង់កាត់ service layer សិន)
+
+សម្រាប់ controller វាមិនត្រឹមត្រូវទេដែលអោយវា ធ្វើការជាមួយ Database ចឹងយើងត្រូវបង្កើតវាទៅតាម layer នីមួយៗ
+
+==>
+
+UserController
+-> UserService
+-> UserRepository
+Clear responsibilities.
+
+
+ហើយសម្រាប់ controller វាធ្វើការ តែ routing ទេ
+
+3-6: Avoid large Classes ជៀសវាង បង្កើត class ដែលធំពេក (ត្រូវបែងចែកទំនួលខុសត្រូវ)
+
+Contains:
+• Registration
+• Login
+• OTP
+• Password Reset
+• Reporting
+• Export
+• Email
+2000+ lines.
+
+Good: យើងគួរតែប្រើ់ប្រាស់ façade pattern យើងធ្វើការបែងចែកជា Use Case 
+ចឹងបើយើងចង់ធ្វើអីមួយ យើងត្រូវគិតទៅលើ case វានីមួយៗសិន ចឹងវាកាត់បន្ថយការសរសេរកូដ វែងៗ ហើយវាងាយស្រួលថែមកូដថ្មី 
+
+RegisterUserUseCase
+LoginUseCase
+VerifyOtpUseCase
+ResetPasswordUseCase
+
+3-7 : Write Self-Documenting Code
+
+// Add 7 days to expiration date
+expirationDate = expirationDate.plusDays(7);
+
+យើងដាក់ លេខ fix 7 days ចឹងចូល វាចេះតែបានហើយតែ បើគេត្រូវការប្តូរលើកក្រោយ គេ​មិនមកកែកូដនឹងហើយ
+
+command នឹងវាមិនចាំបាច់ (// Add 7 days to expiration date)
+
+==> យើងអោយកូដនឹងវាពន្យល់ដោយខ្លួននឹង តែម្តង់
+
+expirationDate = expirationDate.plusDays(OTP_VALIDITY_DAYS);
+
+- OTP_VALIDITY_DAYS វាជា contrance 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
