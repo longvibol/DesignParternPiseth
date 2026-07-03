@@ -1,0 +1,28 @@
+Bad my code :
+
+List<DiscountPolicy> policies = new ArrayList<>();
+        
+        GoldDiscountPolicy gold = new GoldDiscountPolicy();        
+        SilverDiscountPolicy silver = new SilverDiscountPolicy();
+        
+        policies.add(silver);
+        policies.add(gold);
+        
+        DiscountCalculator discountCalculator = new DiscountCalculator(policies);
+        
+        BigDecimal price = new BigDecimal(1000);
+        
+        BigDecimal discount = discountCalculator.calculate("SILVER",price);
+        System.out.println("Afster discount: " + discount);
+
+-------------------------------
+The Best Pratic 
+
+    	//OCP Called     	   
+        DiscountCalculator calculator = new DiscountCalculator(List.of(
+        		new GoldDiscountPolicy(),
+        		new SilverDiscountPolicy()
+        		));
+        
+        BigDecimal discountAmount = calculator.calculate("SILVER",BigDecimal.valueOf(100));   
+        System.out.println("Afster discount: " + discountAmount);

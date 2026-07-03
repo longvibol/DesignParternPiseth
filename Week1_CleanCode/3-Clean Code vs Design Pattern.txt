@@ -1,0 +1,63 @@
+Clean Code Vs Design Pattern 
+
+1- Clean Code Focuses on:
+• Readability : ងាយស្រួលអាន
+• Maintainability ស្រួលថែទាំ
+• Simplicity ភាពសាមញ្ម៉ាញ ៗ របស់កូដនឹង
+
+Ex: 
+
+validateOrder();
+saveOrder();
+sendNotification();
+
+យើងដាក់តែឈ្មោះមក យើងដឹងថាកូដនឹងចង់ធ្វើពីអ្វីបាត់ទៅហើយ
+
+ពេលដែលយើងសរសេរកូដវែងពេក ចុងក្រោយយើងរក ន័យវាមិនឃើញទេ
+
+
+2- Design Pattern
+
+Focuses on:
+• Reusable architecture solutions អាចធ្វើការប្រើប្រាស់បានឡើងវិញ 
+• Flexible design ងាយស្រួលថែមថយ និងអាចកែរបានស្រួល ការឌីសាញ មានភាពបត់បែង
+• Object collaboration : Object ជាច្រើនមានទំនាក់ទំនងគ្នា
+
+Example: 
+
+- Factory patter: ការបង្កើត object 
+• Builder
+- Strategy
+• Observer
+• Facade
+• Adapter
+
+ទោះបីជាយើងចេះ DS ក៏ដោយតែបើអត់មាន Clean Code ទេយើងនឹងពិបាកនឹងការថែទាំ ហើយវានឹងរញ៉េរញៃ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

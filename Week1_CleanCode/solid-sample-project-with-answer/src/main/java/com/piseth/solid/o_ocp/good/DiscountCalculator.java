@@ -10,6 +10,7 @@ public class DiscountCalculator {
 
     private final List<DiscountPolicy> policies;
 
+    // Contractor 
     public DiscountCalculator(List<DiscountPolicy> policies) {
         this.policies = policies;
     }

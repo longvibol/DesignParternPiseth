@@ -1,0 +1,20 @@
+In Enterprise Projects
+When reviewing code, I usually check these questions:
+
+
+1. Can I understand this method in less than 30 seconds? បន្ទាប់ពីអានកូដ នឹងតើយើងយល់ក្នុងរយៈពេល 30s ឬអត់
+
+2. Does this class have only one responsibility? តើ class នឹងមានតែ​មួយ responcity អត់
+
+3. Are names meaningful? តើការដាក់ឈ្មោះ class នឹងឬ function នឹងមានន័យគ្រប់គ្រាន់ឬអត់
+
+4. Is there duplicated logic? តើវាមានកូដ ដដែលឬទេ
+
+5. Can this code be unit tested easily? កូដនឹងតេស្តបានឬ អត់ ឬ ងាយស្រួលតេស្តអត់
+
+6. If requirements change tomorrow, can I modify it safely? បើមានការងារ ថ្មីមកយើងអាចធ្វើការបន្ថែមបានឬអត់ ហើយមានសុវត្តិភាពឬអត់
+
+If the answer is mostly yes, the code is probably clean.
+
+បើវាចូលលក្ខណទាំំងអស់នឹង វាចូលជាលក្ខណ Clean Code ហើយ
+

@@ -1,0 +1,20 @@
+1- Log
+2- Validate 
+3- Mapping 
+4- Save
+
+Example: 
+
+public void register(UserRegisterRequest request) {
+        System.out.println("Start registering user: " + request.getEmail());
+
+        validator.validate(request);
+        User user = userMapper.toEntity(request);
+        User savedUser = userWriter.save(user);
+        welcomeEmailSender.send(savedUser);
+        reportGenerator.generate(savedUser);
+
+        System.out.println("Finished registering user: " + savedUser.getId());
+    }
+
+
