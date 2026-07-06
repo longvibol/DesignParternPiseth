@@ -17,6 +17,7 @@ public class NotificationService {
 
     private final Map<String, NotificationStrategy> strategies;
 
+    //Convert from list to Map
     public NotificationService(List<NotificationStrategy> strategyList) {
         this.strategies = strategyList.stream()
                 .collect(Collectors.toMap(
@@ -27,6 +28,7 @@ public class NotificationService {
     }
 
     public String send(String type, String message) {
+    	// from Map - we provide the type and message 
         NotificationStrategy strategy = strategies.get(type.toUpperCase());
 
         if (strategy == null) {
