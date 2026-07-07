@@ -1,0 +1,18 @@
++ យើងប្រើប្រាស់ក្នុងពេលដែលបង្កើត contructore មាន different runtime data in the constructor 
+
+
+Note:
+
+ពេលយើងប្រើប្រាស់ Map យើងប្រើប្រាស់ object ដដែល មិនមានបង្កើតថ្មីនោះទេ
+- Map Factory with object instance:
+reports.put("SALES", new SalesReport());
+reuses the same object.
+
+----------------------------------------------------------------------
+
+
+ពេលដែលយើងប្រើប្រាស់ supplier វាបង្កើត Object ថ្មីរហូត
+
+- Supplier is better when each call should create a fresh object.
+
+

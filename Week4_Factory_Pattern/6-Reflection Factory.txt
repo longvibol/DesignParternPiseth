@@ -1,0 +1,77 @@
+Lesson 6: Reflection Factory
+
+- ការបង្កើត Object ដោយគ្រាន់តែប្រើ class name
+
+Ex: 
+
+Why It Exists
+Sometimes we do not want to hard-code this:
+registry.put("PDF", PdfExportFile::new);
+registry.put("EXCEL", ExcelExportFile::new);
+
+យើងមិនចឹង Hardcode to create new object with (PdfExportFile::new …)
+
+យើងមិនចាំបាច់បង្កើត ដោយប្រើប្រាស់ Map or if else នោះទេ
+
+==> 
+
+package com.pisethjavaschool.factory.lesson06_reflection;
+
+import com.pisethjavaschool.factory.comman.Report;
+
+public class ReflectionExportFactory {
+
+	public Report create(String className) {
+        try {
+            Class<?> clazz = Class.forName(className);
+            return (Report) clazz.getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException("Cannot create report", e);
+        }
+    }
+
+}
+
+
+---------------------------------------Demo
+
+package com.pisethjavaschool.factory.lesson06_reflection;
+
+import com.pisethjavaschool.factory.comman.Report;
+
+public class ReflectionFactoryDemo {
+
+	public static void main(String[] args) {
+
+		ReflectionExportFactory factory = new ReflectionExportFactory();
+
+        Report report = factory.create(
+            "com.pisethjavaschool.factory.comman.StockReport"
+        );
+
+        report.generate();
+    }
+    
+
+}
+
+
+យើងដាក់ Class name ជំនួសអោយការដាក់ចូល Map
+
+Report report = factory.create(
+            "com.pisethjavaschool.factory.comman.StockReport"
+        );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
