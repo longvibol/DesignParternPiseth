@@ -1,0 +1,5 @@
+ជំនួសដោយការបង្កើត object ដោយប្រើប្រាស់ if else 
+
+==> we create map that have key is the string and value is the "new object"
+
+

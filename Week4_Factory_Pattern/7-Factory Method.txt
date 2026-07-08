@@ -1,0 +1,67 @@
+Lesson 7: Factory Method Pattern
+
+Why It Exists 
+
+Simple Factory has one factory class that decides everything
+យើងមានតែ class មួយទេ ដែលជាអ្នកបង្កើត Object យើងដាក់ type ចូល ចឹងតាមរយៈ Key នឹង the map will return the new object for us
+
+private final Map<String, Report> reports = Map.of(
+			"SALES", new SalesReport(),
+			"STOCK", new StockReport(),
+			"CUSTOMER", new CustomerReport()
+			);
+	
+	public Report getReport(String type) {
+		Report report = reports.get(type);
+		
+		if(report ==null) {
+			throw new IllegalArgumentException("Unsupport report type: " + type);
+		}
+		return report;
+	}
+
+
+------------------------
+
+តែសម្រាប់ Factory Method វាកំណត់អោយ subclass មួយណា វាជាអ្នកសំរាច់ចិត្តបង្កើត Object
+
+- abstract class : is the class that no body
+
+
+----------------------------
+
+
+Think of the parent class as a template.
+
+A normal class is a complete blueprint that you can build directly.
+
+
+An abstract class is a partially completed blueprint: it provides the common parts and leaves some details for subclasses to fill in.
+
+
+An interface is a contract: it says what must be done, but not how.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

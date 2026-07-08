@@ -1,0 +1,179 @@
+Builder Pattern
+
+
+Lesson 1 — Why Builder Exists
+
+
+1- Constructors become difficult. filed​ មានច្រើនពេកពិបាកបង្កើត
+
+Ex: 
+
+ពេលដែលគេបន្ថែម fields ចឹងគេពិបាកមើលថែណាស់ វាអាចច្រលំ
+
+3 fields -> 6 fields ->10 fields ->18 fields ->25 fields
+
+==> Constructors become impossible to understand.
+
+Room room = new Room(
+id,
+propertyId,
+roomCode,
+roomName,
+roomType){}
+
+ពេលយើងបង្កើត Object :
+
+new Room(
+...
+2,
+5
+);
+
+ចឹងយើងពិបាកធ្វើការបង្កើតណាស់ យើងមិនងាយទៅចាំបានលំដាប់ណា ដាក់អ្វីនោះទេ។
+
+
+2- ការប្រើប្រាស់ setters are not always good អាចច្រើលំ ព្រោះអាចធ្វើការ ​set again and again 
+
+
+តើអ្វីខ្លះដែល Builder solve និងពេលណាច្រើប្រាស់វា
+
+
+-------------------------------------------------------------
+
+Lesson 2
+Telescoping Constructor Pattern (វាពង្រេចរហូត បន្ទាប់ពីបង្កើត Object ហើយ)
+
+- បន្ទាប់នឹងចាំបាច់ត្រូវការតែលេខកូដ បន្ទូប់ទេ Suppose only roomCode is required.
+- បន្ធាប់មកគេត្រូវការបន្ថែម" price "​ then " currency " then "wifi"
+
+==> Developer ភាគច្រើនគាត់បង្កើត optional Constructor (overall constructor) 
+
+1-public Room(String roomCode)
+
+2-
+
+public Room(
+String roomCode,
+BigDecimal price,
+Currency currency)
+
+3- 
+
+public Room(
+String roomCode,
+BigDecimal price,
+Currency currency,
+boolean wifi)
+
+This is called : Telescoping Constructor ហើយអា Optional fields នឹងវាមានហូរហែរ 
+
+why it is bad:
+
+- Constructor ច្រើនពេក
+- Hard maintance 
+- ពិបាកចាំ
+- impossible after 15 fields
+
+Constructor មានច្រើនប្រភេទ៖
+- default Constructor 
+- NoArg Constructor 
+- Constructor with parameter 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

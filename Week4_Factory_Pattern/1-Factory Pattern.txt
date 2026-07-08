@@ -1,0 +1,35 @@
+Why It Exists: Factory 
+
+បើវាមាន If else ច្រើនយើងជំនួសវាដោយប្រើប្រាស់ strategy pattern.
+
+សម្រាប់ Factory វាឆ្លើយនឹងសំនួរដូចខាងក្រោយ៖
+
+- Who should create the correct object? តើក្នុងលក្ខណនឹងគួរតែបង្កើត Object មួយណា?
+
+Example:
+
+NotificationStrategy strategy = strategies.get(type);
+strategy.send(message);
+Strategy
+
+- តើយើងនឹងជើសរើស តាមមួយណា
+
+------------------------------------------
+
++ Stragety វាបង្កើត​ Behavior មួយណា
+
++ Factory វាបង្កើត Object មួយណា 
+
+==> Factory ចឹងវាកើតឡើងដោយសារ មាន object ជាច្រើនដែលអាចបង្កើតបាន ដោយអោយស្របទៅតាមលក្ណណាមួយ
+
+Ex: we have 3 stragety SMS, Telegra, Email យោងទៅតាម លក្ខណនឹងយើង បង្កើត Object មួយណាសម្រាប់ទៅតាមលក្ខណ នឹង
+
+(ការបង្កើត Object មានលក្ខណៈស្មុកស្មាន់ ឬមាន លក្ខណច្រើន) 
+
+
+
+
+
+
+
+

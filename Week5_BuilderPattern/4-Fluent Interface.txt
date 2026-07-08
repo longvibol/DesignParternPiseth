@@ -1,0 +1,29 @@
+Lesson 5
+
+Fluent Interface
+
+- Builder is actually a Fluent API. យើងប្រើប្រាស់ . ហើយ ដាក់តម្លៃវានឹង ចឹងគេហៅវាថា api វា call តៗគ្នា 
+
+- Because every method returns Builder instead of void
+
+Ex: 
+
+Stream.of(...)
+	.filter(...)
+	.map(...)
+	.collect(...)
+
+អានឹងគេហៅថា Fluent API
+
+
+Ex: 
+
+StringBuilder
+new StringBuilder()
+.append("Hello")
+.append(" Builder")
+.append(" Pattern");
+
+
+
+

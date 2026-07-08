@@ -1,0 +1,22 @@
+Lesson 3: Strategy + Factory
+
+
+Objective
+
+- Show us how Factory and Strategy work together.
+
+- Strategy handles behavior. អ្នកដោះស្រួលក្ខណៈទៅតាមការចង់បានមួយៗ នឹង (ABA, Wing, Acleda…)
+
+- Factory selects the correct implementation. គឺវាជាអ្នកបង្កើត Object (return the correct strategy)
+
+
+Summary:
+
++ Strategy Pattern: Different payment behavior.
++ Factory Pattern: Create or return the correct payment strategy.
+
+និយាយទៅទាំងពីរ នឹងគេប្រើប្រាស់ចូលគ្នា មួយអ្នកបង្កើត object ហើយមួយទៀតអ្នកដោយស្រាយបញ្ហាទៅតាមលក្ខណមួយៗនឹង
+
+
+ដោយតែវាមិនបានដោះស្រាយបញ្ហា OCP ចឹងសម្រាប់ solve this issue we create map that we can add the new concreate class. 
+

@@ -1,0 +1,157 @@
+Lesson 4
+Classic Builder Pattern
+
+
+Step by step to create Classic Builder Pattern 
+
+
+Step 1- Private constructor. 
+
+ដាក់វាកុំអោយមានគេ Access មកពីខាងក្រៅបាន
+ចឹងពេលបង្កើត Object គេមិនអាចប្រើប្រាស់ new keyword បានទេ
+
+Ex: 
+
+public class Room {
+
+	private String roomCode;
+	private String roomName;
+	private BigDecimal price;
+
+
+private Room() {
+}
+
+}
+
+ចឹង room នឹងវាមាន បី fields ហើយយើងបង្កើត contructor ជា private 
+
+
+Step 2: បង្កើត Builder inner class in the room class 
+
+public static class Builder {
+
+	private final Room room = new Room();
+
+	public Builder roomCode(String roomCode) {
+		room.roomCode = roomCode;
+		return this;
+	}
+
+	public Builder roomName(String roomName) {
+	room.roomName = roomName;
+	return this;
+	}
+
+
+	public Builder price(BigDecimal price) {
+	room.price = price;
+	return this;
+	}
+
+
+	public Room build() {
+	return room;
+	}
+
+}
+
+
+==> បង្កើត public static class Builder ហើយយើងធ្វើការបង្កើត object room : private final Room room = new Room(); នៅខាងក្នុងនឹង
+
+==> ហើយយើងធ្វើការ set property or assign អោយវាមួយៗសម្រាប់ fields នឹង
+
+public Builder roomCode(String roomCode) {
+		room.roomCode = roomCode;
+		return this;
+	}
+- return type Builder (ជា class នឹងតែម្តង់) ហើយដាក់ property វាជា
+
+- ហើយអ្វីដែលសំខាន់គឺ return this (Builder) 
+
+កន្លែង this នឹងគឺ return object Builder នឹង
+
+ចុងក្រោយអ្វីដែលសំខាន់គឺ មាន Method មួយគឺ build() ដែល return type វា​ នឹង Room​៖
+
+public Room build() 
+	{
+		return room;
+	}
+
+------------------------------------------------------
+
+
+
+ហើយពេលប្រើប្រាស់ 
+
+
+Room room = new Room.Builder() បង្កើត object room (តែត្រូវតែមាន .Builder()) បានអាចធ្វើការបង្កើត Object នឹងបាន
+
+Room room = new Room.Builder()
+	.roomCode("DLX001")
+	.roomName("Deluxe")
+	.price(BigDecimal.valueOf(50))
+	.build();
+
+ដោយសារតែអាចុងក្រោយយើង .build() ហើយ return type វាជា Room ចឹងយើងអាចធ្វើការបង្កើត room object នឹងបានហើយ
+
++ Why It Is Better
+
+1- Self-documenting.
+.roomCode("DLX001") ដឹងតែម្តងវាដាក់តម្លៃអោយ code 
+
+2- No parameter order ដាក់អាណាមុនក៏បាន ដោយសារតែវា return Builder ដូចគ្នា
+
+3-Easy to add fields.
+4- Readable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

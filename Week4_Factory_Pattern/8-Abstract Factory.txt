@@ -1,0 +1,65 @@
+Lesson 8: Abstract Factory
+
+Objective: បង្កើត Object តាមផ្នែកវាជា ដោយចែកជាចំណែកថ្នាក់ 
+
+We understand how to create families of related objects. 
+
+- Web UI and Mobile UI (ចឹងបើ web ធ្វើ តាម web នឹងទៅ)
+
+
+==> ចំថាអោយតា factory គឺយើងបង្កើត interface ហើយអោយ implementation វាអោយទៅជា concert class 
+
+វាមានប្រយោតពេលដែលយើង បង្កើតទំនាក់ទំនង Object ច្រើនដែលមានទំនាក់ទំនងគ្នា
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
