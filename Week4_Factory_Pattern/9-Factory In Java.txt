@@ -1,0 +1,139 @@
+Lesson 9: Factory in Java
+
+- We recognize Factory Pattern inside Java itself.
+- Java uses Factory many times to hide complex object creation
+
+Example 1: Calendar
+
+package com.pisethjavaschool.factory.lesson09_FactoryInJava;
+
+import java.util.Calendar;
+
+public class calendardemo {
+
+	public static void main(String[] args) {
+		
+		Calendar calendar = Calendar.getInstance();
+		System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
+	}
+
+}
+
+
+Example 2: NumberFormat
+
+package com.pisethjavaschool.factory.lesson09_FactoryInJava;
+
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
+
+public class NumberFormatDemo {
+
+	public static void main(String[] args) {
+		Locale cambodia = new Locale.Builder()
+                .setLanguage("km")
+                .setRegion("KH")
+                .build();
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(cambodia);
+        formatter.setCurrency(Currency.getInstance("KHR"));
+
+        System.out.println(formatter.format(20));
+
+	}
+
+}
+
+
+Example 3: Executors
+
+package com.pisethjavaschool.factory.lesson09_FactoryInJava;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecutorsDemo {
+
+	public static void main(String[] args) {
+		ExecutorService executor = Executors.newFixedThreadPool(5);
+		
+		for (int i = 0; i < 10; i++) {
+		    executor.submit(() -> {
+		        System.out.println(Thread.currentThread().getName());
+		    });
+		}
+
+		executor.shutdown();
+		
+//		Notice that only five thread names appear repeatedly.
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

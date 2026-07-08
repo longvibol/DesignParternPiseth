@@ -1,0 +1,7 @@
+Lesson 10: Factory in Spring
+
+
+We understand that Spring itself is heavily based on object creation and
+dependency injection.
+
+
