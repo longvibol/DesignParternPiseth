@@ -1,0 +1,104 @@
+Lombok : it make the code more flexible 
+
+Add dependency in the spring boot: 
+
+
+<!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <annotationProcessorPaths>
+                    <path>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>1.18.38</version>
+                    </path>
+                </annotationProcessorPaths>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
+
+----------------------------------------------
+
+Example:
+
+Class : Room 
+
+package com.pisethjavaschool.factory_pattern_springboot.payment.demolombok;
+
+import java.math.BigDecimal;
+
+import lombok.Builder;
+import lombok.ToString;
+
+@Builder
+@ToString
+public class Room {
+	private String roomCode;
+	private String roomName;
+	private BigDecimal price;
+}
+
+
+---------------------------------------------
+
+Demo :
+
+package com.pisethjavaschool.factory_pattern_springboot.payment.demolombok;
+
+import java.math.BigDecimal;
+
+public class DemoLombok {
+
+	public static void main(String[] args) {
+		Room room = Room.builder()
+				.roomCode("A01")
+				.roomName("Deluxe Room")
+				.price(BigDecimal.valueOf(100))
+				.build();
+		
+		System.out.println(room);
+
+	}
+
+}
+
+
+==> Result 
+
+Room(roomCode=A01, roomName=Deluxe Room, price=100)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
