@@ -1,0 +1,208 @@
+Why Enterprise Loves Immutable Objects:
+
+Benefits:
+
+- Thread-safe ការប្រើប្រាស់ក្នុងពេលតែមួយ មិនងាយកើតមានឡើង ព្រោះយើងមិនអាចកែប្រែបាន immutable object 
+- Easier debugging ងាយស្រួលទោសទាយ ថាតម្លៃចុងក្រោយប៉ុន្មាន
+- No accidental modification
+- Predictable behavior
+
+សម្រាប់ Java គេបង្កើត Recorde that have the filed is final 
+
+
+Lesson 7 - Builder Validation 
+
+Why It Exists:
+
+Builder should not create invalid objects.
+
+Suppose Room requires:
+roomCode
+price
+
+ពេលបង្កើត Object បើយើងភ្លេចដាក់តម្លៃ និងលេខកូដ មិនចប់ហើយ ចឹងយើងត្រូវធ្វើការ Validate វា
+
+Bad Builder
+Room room = new Room.Builder().build();
+
+Oops.
+
+យើងយើងត្រូវធ្វើការ Validation យើងម្តេចវិញ
+
+ចឹងយើងធ្វើការ ដាក់ validation កន្លែបង្កើត Object Builder នឹងតែម្តង
+
++ Validate Inside build()
+
+public Room build() {
+	if (roomCode == null || roomCode.isBlank()) {
+throw new IllegalArgumentException("Room code is required");
+}
+
+if (price == null) {
+	throw new IllegalArgumentException("Price is required");
+}
+
+return new Room(this);
+
+}
+
+Now
+
+new Room.Builder().build();
+
+Immediately fails.
+
+ចឹងវាធ្វើការ ពិនិត្យមើលសិនបើវា
+
+-------------------------------
+
+Code : demo 
+
+package com.pisethjavaschool.builder.lesson06_validation;
+
+import java.math.BigDecimal;
+
+public class BuilderValidationDemo {
+
+	public static void main(String[] args) {
+		 Room validRoom = Room.builder()
+	                .roomCode("DLX001")
+	                .price(BigDecimal.valueOf(80))
+	                .currency("USD")
+	                .build();
+
+	        System.out.println(validRoom);
+
+        try {
+            Room.builder().build();
+        } catch (IllegalArgumentException exception) {
+            System.out.println("Validation works: " + exception.getMessage());
+        }
+	}
+
+}
+
+
+----------------------------
+
+Room Class:
+
+package com.pisethjavaschool.builder.lesson06_validation;
+
+import java.math.BigDecimal;
+
+public class Room {
+	private final String roomCode;
+	private final BigDecimal price;
+	private final String currency;
+
+	private Room(Builder builder) {
+		this.roomCode = builder.roomCode;
+		this.price = builder.price;
+		this.currency = builder.currency;
+	}
+
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	public static class Builder {
+		private String roomCode;
+		private BigDecimal price;
+		private String currency;
+
+		public Builder roomCode(String roomCode) {
+			this.roomCode = roomCode;
+			return this;
+		}
+
+		public Builder price(BigDecimal price) {
+			this.price = price;
+			return this;
+		}
+
+		public Builder currency(String currency) {
+			this.currency = currency;
+			return this;
+		}
+
+		public Room build() {
+			if (roomCode == null || roomCode.isBlank()) {
+				throw new IllegalArgumentException("Room code is required");
+			}
+			if (price == null || price.compareTo(BigDecimal.ZERO) <= 0) {
+				throw new IllegalArgumentException("Price must be greater than zero");
+			}
+			if (currency == null || currency.isBlank()) {
+				throw new IllegalArgumentException("Currency is required");
+			}
+			return new Room(this);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Room{" + "roomCode='" + roomCode + '\'' + ", price=" + price + ", currency='" + currency + '\'' + '}';
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

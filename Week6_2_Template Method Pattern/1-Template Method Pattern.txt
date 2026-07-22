@@ -1,0 +1,32 @@
+1- Export Data 
+
+PDF Export
+Excel Export 
+CSV Export 
+
+- All exports follow similar workflow
+
+1- Validate request 
+2- Load data
+3- Format data
+4- Save file
+5- Save file
+6- Return result 
+
+ចឹងសម្រាប់លំនាំខាងលើនឹងវាដូចតែគ្នាទេ
+
+- Only some steps are different អ្វីដែលវាខុសគ្នា
+
+PDF -> format as PDF
+Excel -> format as Excel
+CSV -> format as CSV 
+
+ចឹងគេប្រើប្រាស់ Template Method ដើម្បីកាត់បន្ថយ Workflow 
+
+--> Duplicate code : DRY (don't repeat your) កូដយើងវាដដែលៗ
+
+
+
+
+
+

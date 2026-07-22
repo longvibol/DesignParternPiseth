@@ -1,0 +1,196 @@
+- Immutable Objects: Object ដែលមិនអាចធ្វើការកែប្រែបាន
+
+- Mostly use : Builder Patter and Immutable Object : គេប្រើជាមួយគ្នា
+
+Why:
+
+1- Can someone accidentally change this Room?
+
+Room room = new Room();
+room.setPrice(BigDecimal.valueOf(50));
+...
+room.setPrice(BigDecimal.ZERO);
+
+
+==> Answer: Yes.
+The object changes anytime.
+
+បើមានគេច្រលំហើយធ្វើការកែប្រែតម្លៃនឹង បានមិនចប់ហើយ 
+
+2- Example
+
+Payment
+---------
+id
+amount
+currency
+payer
+receiver
+status
+createdDate
+Should someone be allowed to do this?
+payment.setAmount(BigDecimal.ZERO);
+Absolutely not.
+Once a payment is created, it should never change.
+
+សម្រាប់ការបង់ប្រាក់ យើងមិនអាចធ្វើគេកែប្រែបានទេ ព្រោះទាក់ទង និងការបង់ប្រាក់(របស់នឹង គេ បង់ប្រាក់ហើយ ដាក់ចូលក្នុង db ហើយចឹងយើងអត់គួរអោយគេ
+ធ្វើការកែប្រែបានទេ)
+
+- ជំនួសអោយគេធ្វើការកែប្រែបានយើង ធ្វើការដាក់វាជា immutable object យើងដាក់វាជា Private 
+
+public class Payment {
+
+	private final UUID id;
+	private final BigDecimal amount;
+	private final Currency currency;
+
+}
+
+យើងអត់មាន ដាក់ setters ចឹងគេមិនអាចធ្វើការកែប្រែតម្លៃបានទេ
+
+
+-----------------------------------------------------------------
+
+Demo :
+
+
+package com.pisethjavaschool.builder.lesson05_immutable;
+
+import java.math.BigDecimal;
+import java.util.UUID;
+
+public class ImmutableBuilderDemo {
+
+	public static void main(String[] args) {
+
+		Payment payment = new Payment.Builder()
+				.id(UUID.randomUUID())
+				.amount(BigDecimal.valueOf(100))
+				.build();
+
+		System.out.println(payment.toString());
+		System.out.println("Payment has final fields and no setters, so it cannot be changed after creation.");
+		
+	}
+
+}
+
+
+--------------------------------
+
+Class
+
+
+package com.pisethjavaschool.builder.lesson05_immutable;
+
+import java.math.BigDecimal;
+import java.util.UUID;
+
+public class Payment {
+
+	private final UUID id;
+	private final BigDecimal amount;
+
+	private Payment(Builder builder) {
+		this.id = builder.id;
+		this.amount = builder.amount;
+
+	}
+
+	public static class Builder {
+		private UUID id;
+		private BigDecimal amount;
+
+		public Builder id(UUID id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder amount(BigDecimal amount) {
+			this.amount = amount;
+			return this;
+		}
+
+		public Payment build() {
+			return new Payment(this);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Payment [id=" + id + ", amount=" + amount + "]";
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -41,6 +41,7 @@ new Room(
 -------------------------------------------------------------
 
 Lesson 2
+
 Telescoping Constructor Pattern (វាពង្រេចរហូត បន្ទាប់ពីបង្កើត Object ហើយ)
 
 - បន្ទាប់នឹងចាំបាច់ត្រូវការតែលេខកូដ បន្ទូប់ទេ Suppose only roomCode is required.

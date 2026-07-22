@@ -1,4 +1,4 @@
-+ យើងប្រើប្រាស់ក្នុងពេលដែលបង្កើត contructore មាន different runtime data in the constructor 
++ យើងប្រើប្រាស់ក្នុងពេលដែលបង្កើត constructor មាន different runtime data in the constructor 
 
 
 Note:

@@ -1,0 +1,1 @@
+https://github.com/pisething/design-pattern/blob/main/template-method-pattern-class-samples/plain-java/src/main/java/com/pisethjava/template/lesson02_template/JsonReportExporter.java

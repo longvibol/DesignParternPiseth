@@ -36,12 +36,12 @@ Solution :
 2- Simple Factory : 
 
 public class ReportFactory {
-	ublic Report create(String type) {
+	public Report create(String type) {
 if ("SALES".equals(type)) {
-	eturn new SalesReport();
+	return new SalesReport();
 }
 if ("STOCK".equals(type)) {
-	eturn new StockReport();
+	return new StockReport();
 }
 
 throw new IllegalArgumentException("Unsupported report type: " +

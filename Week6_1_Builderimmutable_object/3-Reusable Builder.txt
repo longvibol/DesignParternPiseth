@@ -1,0 +1,123 @@
++ Reusable Builder : share configuration 
+
+យើងអាចយក អា builder នឹងមកប្រើប្រាស់ឡើងវិញបាន
+
+Ex
+
+Room.Builder builder = new Room.Builder()
+
+	.price(BigDecimal.valueOf(50))
+	.wifi(true);
+
+ចឹងកន្លែងនឹងវា Return is the Builder not room ==> យើងអាចបង្កើតបានបន្ទាប់ពី builder នឹង
+
+- Build Deluxe បង្កើតបន្ទាប់ជា Deluxe 
+
+Room deluxe = builder
+	.roomCode("DLX001")
+	.roomName("Deluxe")
+	.build();
+
+ចឹងបន្ទាប់ Deluxe នឹងអាចធ្វើការចាប់តម្លៃពីអាខាងលើបាន ហើយយើងក៏អាចធ្វើការ overight បានដែល
+
+-----------------------------
+
+Demo 
+
+package com.pisethjavaschool.builder.lesson07_reusable;
+
+import java.math.BigDecimal;
+
+public class ReusableBuilderDemo {
+
+	public static void main(String[] args) {
+		 Room.Builder commonRoomBuilder = Room.builder()
+	                .price(BigDecimal.valueOf(50))
+	                .wifi(true);
+		 Room deluxe = commonRoomBuilder
+	                .roomCode("DLX001")
+	                .roomName("Deluxe Room")
+	                .build();
+
+        Room suite = commonRoomBuilder
+                .roomCode("STE001")
+                .roomName("Suite Room")
+                .price(BigDecimal.valueOf(120))
+                .build();
+
+        System.out.println(deluxe);
+        System.out.println(suite);
+        System.out.println("Reusable builder can share common configuration, but be careful with changed state.");
+
+	}
+
+}
+
+
+--------------------------
+
+Class Room: 
+
+
+package com.pisethjavaschool.builder.lesson07_reusable;
+
+import java.math.BigDecimal;
+
+public class Room {
+	private final String roomCode;
+	private final String roomName;
+	private final BigDecimal price;
+	private final boolean wifi;
+
+	private Room(Builder builder) {
+		this.roomCode = builder.roomCode;
+		this.roomName = builder.roomName;
+		this.price = builder.price;
+		this.wifi = builder.wifi;
+	}
+
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	public static class Builder {
+		private String roomCode;
+		private String roomName;
+		private BigDecimal price;
+		private boolean wifi;
+
+		public Builder roomCode(String roomCode) {
+			this.roomCode = roomCode;
+			return this;
+		}
+
+		public Builder roomName(String roomName) {
+			this.roomName = roomName;
+			return this;
+		}
+
+		public Builder price(BigDecimal price) {
+			this.price = price;
+			return this;
+		}
+
+		public Builder wifi(boolean wifi) {
+			this.wifi = wifi;
+			return this;
+		}
+
+		public Room build() {
+			return new Room(this);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Room{" + "roomCode='" + roomCode + '\'' + ", roomName='" + roomName + '\'' + ", price=" + price
+				+ ", wifi=" + wifi + '}';
+	}
+}
+
+
+
+
