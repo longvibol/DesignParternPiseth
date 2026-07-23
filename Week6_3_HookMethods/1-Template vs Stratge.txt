@@ -1,0 +1,40 @@
+- Strategy : change behavior 
+
+Payment -> ABA, KHQR, Wing យើងអាចធ្វើការបង់ប្រាក់បានច្រើនទំរង់តែយើងយកតែមួយទេ
+
+==> chose strategy (Runtime choose different algorithm) 
+
+
+- Template Method : Changes Steps (ធ្វើការតាមលំដាប់លំដោយ)
+ Workflow -> Step A -> Step B -> custom step -> finish
+
+Workflow is fix. 
+
+
+Strategy : Which algorithm ? algorithm មួយណា គឺមានន័យថា រើស Strategy ហើយ
+
+Factory : បង្កើត object មួយណា​( which object) 
+
+Builder:  How to build object? បង្កើត Object នឹងរបៀបម្តេច
+
+Template: ហើយ step មួយណាយើងអាធ្វើការ customize បាន
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
