@@ -1,0 +1,140 @@
++ Adapter Pattern (Convert)
+
+
+Start with a Real-Life Example: "Can you plug a US charger directly into a Cambodian power outlet?"
+
+ប្រើប្រាស់សម្រាប់សំរប់សំរួលក្នុងការ ផ្លាស់ប្តរពណ៌មាន
+
+- ការផ្ញើរប្រាក់ទៅធានាគារផ្សេង ៗ
+
+PaymentGateway : Sent money to ABA : គេអោយ SDK from the ABA 
+
+==> SDK is like the api from other company 
+
+public AbaResponse submitPayment(
+String accountNumber,
+double amount,
+String currency
+) {
+
+
+ចឹងមានន័យថាអាចអោយ SDK របស់គេប្រើប្រាស់ code របស់យើងបានអត់ គឺអត់បាននោះទេ that why we need convert from ABC SDK to our interface 
+
+Question:
+Can Java compile this?
+No.
+-Different interface.
+-Different method.
+-Different parameters.
+-Different return type.
+
+
+------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

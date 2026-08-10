@@ -1,0 +1,219 @@
+Observer Pattern has four participants: មានបួនចំនុចសំខាន់
+
+1- Subject (Publisher) អ្នកផ្សោះផ្សាយ Event នឹង
+
++ មានរឿងអ្វីកើតឡើង Something happened.
+
+- មានអីកើតឡើង User Registered (User គាត់មកចុះឈ្មោះ)
+- មានការ Order : Order Created 
+- ការបង់ប្រាក់ : payment completed 
+- Room Approved 
+
+អោយតាមានអ្វីកើតឡើង យើងធ្វើការ Publish Event នឹង​
+
+2- Observer : អង្កេត ឬ សង្កេត
+
+តើពេលឃើញ ព្រឹត្តិការណ៍អ្វីមួយ គាត់មាន Reaction ឬអត់
+
+វាជា Object ដែលចាប់អារម្មណ៍លើ ព្រឹត្តិការណ៍ នឹង Objects interested in that event.
+
+-Example
+-Email
+-SMS
+-Analytics
+-Audit
+-Notification
+
+ពេលមានគេ Order (publish) ចឹង stock ត្រូវធ្វើការ​ block stock នឹងសិន ៥ សិន​ ឬ ៦សិន កុំអោយ stock នឹងទៅអ្នកផ្សេង
+
+(ភាគច្រើន វាជា Interface : Observer នឹង)
+
+
+3- Concrete Observer
+
+Actual implementations.
+-WelcomeEmailObserver
+-SmsObserver
+-AuditObserver
+-AnalyticsObserver
+
+
+4- Event ព្រឹត្តិការណ៍ (របស់ដែលគេបានបោះមកនឹង)
+
+ពត៌មានដែលត្រូវបាន Share 
+
+The information being shared.
+
+public class UserRegisteredEvent {
+
+	private final User user;
+
+	public UserRegisteredEvent(User user) {
+		this.user = user;
+	}
+
+	public User getUser() {
+		return user;
+	}
+}
+
+
+class Register ចឹងអ្វីដែលសំខាន់គឺ private final User user; អ្វីដែលយើងធ្វើការបោះទៅ
+
+ពេលបោះទៅហើយអ្នកចាំយកពត៌មាននឹង មានអ្នកណាគេខ្លះគេធ្វើការ​ យកទៅ SmsObserver គាត់នឹងពិនិត្យមើលទៅ មានលេខទូរស័ព្ទអត់ព្រោះគាត់ត្រូវការ
+យកទៅធ្វើការ ផ្លើរសារ 
+
+
+
+		Observer Diagram
+		Publish
+
+UserService ---------------------- UserRegisteredEvent
+│
+│
+─────────────────────────
+│ 					│ 			│
+EmailObserver SmsObserver AuditObserver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+Publish/Subscribe: 
+
+Publisher never knows subscribers. វាទាំងពីរមិនចាំបាច់ស្គាល់គ្នាទេ
+
+- ​Publisher -> Broker -> Subscribers
+
+វាមាន Broker មួយនៅកណ្តាល Kafka or Rabit MQ 
+
+Publisher -> Kafka -> Subscriber A, Subscriber B, Subscriber C
+
+ចឹងអ្នក Subscriber មិនចាំបាច់ស្គាល់ publisher នោះទេ​
+
+---------------------------------------------- 
+
+Observer : Same JVM (the same enviroment)
+
+Publish/Subscribe: Different Applications (system ផ្សេងគ្នា)
+
+
+
+
