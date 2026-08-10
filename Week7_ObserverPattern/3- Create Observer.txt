@@ -1,0 +1,351 @@
++ Implement Observer in JAVA Plan code 
+
+Step 1:
+
+Observer Interface
+
+
+public interface UserObserver {
+	void onUserRegistered(User user);
+}
+
+បង្កើត Interface UserObserver ដែលក្នុងនឹងអាចមានច្រើន តែយើងលើកយកតែមួយទេ ការចុះឈ្មោះ
+
+in order to register we input the user: void onUserRegistered(User user);
+
+
+Step 2: Concrete Observer
+
++ Email:
+
+public class WelcomeEmailObserver implements UserObserver {
+
+@Override
+public void onUserRegistered(User user) {
+
+	System.out.println("Send welcome email to "+ user.getEmail());
+		}
+}
+
+សំខាន់ user.getEmail()) កន្លែងដែលយើង ធ្វើការ ចាប់យកតែ Email ចេញពី user 
+
+
++ SMS
+
+public class SmsObserver implements UserObserver {
+
+@Override
+public void onUserRegistered(User user) {
+	System.out.println("Send SMS to "+ user.getPhone());
+	}
+}
+
+
+សំខាន់កន្លែងដែលយើងយក  user.getPhone()
+
++ Audit
+
+
+public class AuditObserver implements UserObserver {
+
+@Override
+public void onUserRegistered(User user) {
+	System.out.println("Audit user "+ user.getUsername());
+	}
+}
+
+សំខាន់គឺចំនុចនីមួយៗ នីង user.getUsername()
+
+-----------------------------------------------
+
+ការបង្កើត Publisher 
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserEventPublisher {
+	private final List<UserObserver> observers =
+		new ArrayList<>();
+
+
+	public void register(UserObserver observer) {
+		observers.add(observer);
+	}
+
+public void publish(User user) {
+	for (UserObserver observer : observers) {
+		observer.onUserRegistered(user);
+		}
+	}
+}
+
+==> កន្លែងដែលសំខាន់ ៖ 
+
+	public void register(UserObserver observer) {
+		observers.add(observer);
+	}
+
+យើងធ្វើការ បង្កើត function ចុះឈ្មោះដោយត្រូវធ្វើការ ដាក់ចូល Interface : UserObserver (ចឹងមានន័យថា Implementation របស់
+វាយើងអាចធ្វើការដាក់ចូលបាន)
+
+==> publish កន្លែងដែលយើងបោះទៅអោយ Observer 
+
+for (UserObserver observer : observers) {
+	observer.onUserRegistered(user);
+}
+
+- កន្លែងនឹង វាធ្វើការ loop មួយៗ ហើយ វាបោះទៅ មួយៗ នឹង
+
+---------------------------------------
+
+ពេលហៅវាមកប្រើប្រាស់
+
+Lesson 5 — UserService
+
+public class UserService {
+
+	private final UserEventPublisher publisher;
+
+	public UserService(UserEventPublisher publisher) {
+		this.publisher = publisher;
+	}
+
+	public void register(User user) {
+		System.out.println("Save User");
+		publisher.publish(user);
+	}
+}
+
+សម្រាប់ UserService វាត្រូវការដឹងតែ UserEventPublisher publisher; ដើម្បីធ្វើការ Public ទៅអោយ Service ផ្សេងៗ publisher.publish(user);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+Synchronous Observer Vs Asynchronous Observer
+
+1- Should User Registration wait for Email? តើយើងគួរតែរងចាំ ការផ្ញើរ email រួចហើយសិនបានបន្តទៅ
+ឬ គួរតែមិនចាំបាច់ចាំនោះទេ
+
+* Synchronous Observer វាធ្វើការតគ្នាមួយៗសិន 
+
+User Register -> Email -> SMS -> Audit -> Analytics -> Return Response
+
+Everything happens one by one.
+
+
+Advantages
+
+-Easy to debug 
+-Simple
+-Immediate consistency 
+
+
+Disadvantages វាយឺត
+
+Slow.
+If Email takes 5 seconds => Registration waits 5 seconds.
+
+----------------------------------------------------------------------
+
+* Asynchronous Observer: Kafka or Rabbit MQ
+
+ការងារខ្លះយើងអាចអោយវាធ្វើ In background បាន មិនចាំបាច់អោយវាចាំគ្នានោះទេ
+
+Save User -> Return Response ->Background Processing
+
+Email
+SMS
+Audit
+Analytics
+
+ទាំងនេះបង្ទាប់ពីធ្វើហើយអាចអោយវាធ្វើការតាមក្រោយបាន
+
+
+In Java we can use :
+
+CompletableFuture.runAsync(() ->
+emailObserver.onUserRegistered(user));
+
+Advantages
+
+-Fast response.
+-Scalable.
+-Observers run independently. អត់រង់ចាំបន្តបន្ទាប់ទេ
+
+Disadvantages
+-More difficult to debug.
+-Events may arrive later.
+-Requires retry strategy.
+
+---------------------------------------
+
+In Spring Events : Default is Synchronous 
+
+Kafka -> Asynchronous( Run in the background ) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

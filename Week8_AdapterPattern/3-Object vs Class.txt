@@ -1,0 +1,58 @@
+Object Vs Class Adapter:
+
+1-Object
+
+- most of the practice we use Object Adapter 
+
+- Adapter HAS-A SDK  
+
+- Composition ( បង្កើតមក មាន SDK នៅក្នុងនឹង )
+
+2-Class ពិបាកប្រើប្រាស់
+
+- Adapter IS-A SDK 
+- Inheritance
+- Rare in Java because Java supports only single inheritance 
+
+Connected to the SOLID Connection: 
+
+- OCP : PaymentService unchanged.
+- DIP : PaymentService depends on PaymentGateway Not ABA SDK
+- SRP : single responsibly 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

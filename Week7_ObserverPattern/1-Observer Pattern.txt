@@ -1,0 +1,205 @@
+- Observer Pattern 
+
+Why Observer :
+
+Example : Start With a Real Enterprise Problem
+
+- Imagine we are building Room Booking Platform
+
+A new owner user registers.
+
+What should happen?
+
+1-User registers ចុះឈ្មោះអ្នកប្រើប្រាស់
+
+2- Save User: 
+	- Send Welcome Email
+	- Send SMS
+	- Create Owner Profile
+	- Create Audit Log
+	- Update Analytics ថ្ងៃណាខែណា ធ្វើការបង្កើតខ្លះ
+	- Notify Admin
+	- Award Welcome Points
+
+Question : 
+
+Who should be responsible for all these actions?
+
+- Most beginners answer: UserService (តែមិនត្រឹមត្រូវទេ ព្រោះវាធ្វើការច្រើនពេក)
+
+1- Bad Design 
+
+@Service
+	public class UserService {
+
+	public void register(CreateUserRequest request) {
+
+		validate(request);
+
+		User user = userRepository.save(request);
+
+		emailService.sendWelcomeEmail(user);
+
+		smsService.sendSms(user);
+
+		ownerProfileService.create(user);
+
+		auditService.log(user);
+
+		analyticsService.track(user);
+
+		notificationService.notifyAdmin(user);
+
+		loyaltyService.giveWelcomePoints(user);
+
+	}
+}
+
+- វាមានច្រើន Method នៅក្នុង UserService នឹង
+- ហើយ សម្រាប់ UserSrevice នឹងត្រូវដឹងច្រើន
+
+==> inside the UserService have many service វាដឹងច្រើនពេកហើយ 
+
+
+What Happens Tomorrow? តើមានអ្វីកើតឡើងនៅពេលក្រោយ
+
+- Business says:
+	Add Telegram Notification.
+Modify UserService.
+
+- Next week:
+	Add Kafka Event.
+Modify UserService.
+
+- Next month:
+	Add Slack Notification.
+
+Modify UserService again.
+
+
+==> វាបំពាន់ solid principle : Open/Closed Principle អោយតាត្រូវកែ ឬ បន្ថែម feature វាត្រូវមកកែ class ដើម
+
++ ​Why Observer Exists? 
+
+Instead of this : UserService -> Email -> SMS -> Analytics -> Audit វាធ្វើការច្រើនពេក
+
+==> Observer says យើងប្រើប្រាស់ Observer 
+
+UserService -> Publish Event -> Observers decide whether they care
+
+- UserService ផ្សាយជា Event វិញ Publish Event (បើមានព្រឹត្តិការណ៍អ្វីកើតឡើង ហើយ service មួយណាចាប់អារម្មណ៍) 
+
++ UserService : ផ្សាយ Event ទៅ ឧ Register Event ហើយ Observers ណាចាប់អារម្មណ៍ឬត្រូវចាំយកវាទៅធ្វើទៅ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

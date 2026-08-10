@@ -1,0 +1,91 @@
+How to create it 
+
+
+- we perveance taking directly to the external sdk 
+
+
+Payment Service -> PaymentGateway -> Adapter -> External SDK
+
+យើងបង្កើត service that call paymentGateway (interface) 
+
+ធ្វើចឹងមានន័យថា ខាងយើង service មិនចាំបាច់ដឹង ផ្នែកខាង external ABA, AClida or wing នោះទេ
+យើងបង្កើត តែ Adapter object ហើយយើងអាចប្រើប្រាស់ PaymentGateway នឹងបានហើយ ព្រោះវាជា interface 
+
+then it will create object for us 
+
+
+---------------------------------------
+
+
+Adapter Structure:
+
+1-Client : is our business logic : our business logic. Example PaymentService (Payment Service)
+
+2-Target Interface : គឺជា interface ដែលរំពឹងទុកពី Client របស់ហើយ (PaymentGateway)
+
+3-Adaptee : Existing class. Cannot modify (external from other)
+
+4-Adapter : converts PaymentGateway -> ABA ADK
+
+----------------------------------------
+
+
+UML: Unified Modeling Language
+
+PaymentService ——————> PaymentGateway
+				│
+				│ implements
+				│
+			AbaPaymentAdapter
+				│
+				│ uses
+			AbaPaymentSdk
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

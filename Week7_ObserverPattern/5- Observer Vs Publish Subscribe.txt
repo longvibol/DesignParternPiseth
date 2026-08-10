@@ -1,0 +1,89 @@
+Observer Pattern : 
+
+Publisher knows the observers.
+
++ អ្នកអាចចងចាំ Observer Pattern ដោយគិតថាវាដូចជា ការជាវទទួលព័ត៌មាន (Subscribe) នៅលើ Facebook ឬ YouTube។
+
+Observer Pattern គឺជាអ្វី?
+
+Observer Pattern គឺជា Design Pattern មួយ ដែលអនុញ្ញាតឱ្យ Object មួយ (Publisher/Subject) ជូនដំណឹង (Notify) ទៅកាន់ Object ផ្សេងៗ (Observers/Subscribers) នៅពេលមានព្រឹត្តិការណ៍ (Event) កើតឡើង។
+
+ពាក្យគន្លឹះ
+
+- Publisher (Subject) = អ្នកប្រកាសព័ត៌មាន
+
+- Observer (Subscriber) = អ្នកដែលចុះឈ្មោះទទួលព័ត៌មាន
+
+- Publish = ផ្ញើព័ត៌មាន
+
+- Subscribe = ចុះឈ្មោះទទួលព័ត៌មាន
+
+- Notify = ជូនដំណឹង
+
+ស្រមៃថា YouTube Channel មួយ។
+
+          YouTube Channel
+             (Publisher)
+                  │
+ ┌───────────┼───────────┐
+      │           │           │
+ Subscriber A  Subscriber B  Subscriber C
+ (Observer)    (Observer)    (Observer)
+
+- ពេល Channel Upload Video ថ្មី
+
+	Publisher
+           │
+    Publish New Video
+            │
+ ┌───┴───────────┐
+ │               │
+Notify A      Notify B      Notify C
+
+អ្នក Subscribe ទាំងអស់ នឹងទទួល Notification ដោយស្វ័យប្រវត្តិ។
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
