@@ -1,0 +1,175 @@
+Why Façade:
+
+- Why façade :យើងប្រាស់ពេលដែល Client ដឹងរឿងច្រើនពេក
+
+When a customer places an order, the system must:
+
+1- Validate the customer
+2- Validate the order
+3-Check inventory
+4. Reserve products
+5. Process payment
+6. Create shipment
+7. Generate invoice
+8. Send confirmation
+9. Write audit log
+
+ពេលដែលវាដឹងរឿងច្រើនពេក វាធ្វើអោយ៖
+
+- difficult to test 
+- ពីបាកពេលថែ ពិបាកប្រើប្រាស់ បើយើងដាក់នៅក្នុង controller 
+
++ Controller : មានតួនាទី Routing or coordinate 
+
+- What is Façade Pattern 
+
++ Facade Pattern provides a simple interface to a complex subsystem. វាផ្តល់ interface មួយដែលងាយស្រួល
++ មួយ service នឹងគេហៅថា មួយ subsystem ហើយ 
+
+Ex: private final CustomerService customerService;
+
+គឺយើងដាក់ Service នឹងនៅក្នុង Façade តែមួយវិញ
+
++ Facade Structure
+
+
+Client ( our controller )
+  │
+Façade ( Interface )
+  │
+── Subsystem A
+── Subsystem B
+── Subsystem C
+── Subsystem D
+
++ Client : The class that needs to use the subsystem.
++ Façade : Provides the simple entry point ច្រកចេញចូល នឹងហើយ
++ Subsystems : Classes that perform the real work.
+
+Ex: 
+
+InventoryService
+PaymentService
+ShippingService
+InvoiceService
+NotificationService
+
+- focused subsystem classes: ផ្តោតទៅលើការងាររបស់វារៀងៗខ្លួន in side the subsystem 
+- Façade just coordinate 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

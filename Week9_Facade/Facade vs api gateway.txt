@@ -1,0 +1,70 @@
+- API Gateway is an architectural component. Client មិនអាចធ្វើការ call directory to our service. it need to have 
+api gateway to called វាដូចជារបង់ផ្ទះ ចឹង
+
+នៅក្នុង API gateway នឹងវាអាចមានដូចជា៖
+
+It may handle:
+• Routing
+• Authentication
+• Rate limiting
+• Request filtering
+• Load balancing
+• Logging
+• Response aggregation
+
+- Façade it is just on OOD object oriented design 
+
+---------------------------------------------------------
+
+ការប្រើប្រាស់ façade in the java:
+
+Java contains many Facade-like APIs.
+
+Example 1 — Files
+
+Instead of manually working with streams, buffers, and channels:
+String content = Files.readString(path); យើងគ្រាន់តែ បោះ file យើងចូលហើយខាងក្នុងនឹងវាជាអ្នកធ្វើការបើក read inside that file 
+
+The Files class hides many lower-level file operations.
+
+It provides a simpler interface.
+
+Example 2 — Collections : sort 
+
+Collections.sort(list);
+
+និយាយទៅវាលាក់អាភាពស្មុកស្មាន់នឹង នៅខាងក្នុងអស់ហើយ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
