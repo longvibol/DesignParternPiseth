@@ -1,6 +1,5 @@
 package com.pisethjava.decorator.demo;
 
-import com.pisethjava.decorator.notification.EmailNotificationSender;
 import com.pisethjava.decorator.notification.EncryptionNotificationDecorator;
 import com.pisethjava.decorator.notification.LoggingNotificationDecorator;
 import com.pisethjava.decorator.notification.NotificationSender;

@@ -1,0 +1,1 @@
+- ការសរសេរ កូដភាគច្រើនជាទូរទៅគេប្រើប្រាស់ composition over inheritance
