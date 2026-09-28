@@ -1,0 +1,20 @@
+Proxy vs Façade
+
+- Façade (ប្រមូលផ្តុំ component ផ្សេងៗ ដាក់មួយ User case) ដើម្បីធ្វើការក្តោបវា ឬវិញខ្ចប់
+ច្រកចេញចូលតែមួយ។​
+
+Client
+|
+BookingFacade
+── RoomService 
+── PaymentService
+── NotificationService
+Facade simplifies a subsystem.
+
+- Proxy:
+
+Client -> PaymentProxy -> PaymentService
+
+PaymentProxy វាដំណាងអោយ PaymentService គ្រាន់តែវានៅខាងមុខ 
+
+

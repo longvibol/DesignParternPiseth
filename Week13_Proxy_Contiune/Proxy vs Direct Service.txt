@@ -1,0 +1,29 @@
+- Proxy vs Direct Service:
+
+បើ class មួយវាធ្វើការច្រើនពេក 
+
+Business processing
+Security
+Logging
+Caching
+Rate limiting
+Auditing
+This violates SRP. ចឹងវាបំពាន់គោលការណ៍ Single responsible ហើយ
+
+គេចង់បាននឹងគេ class មួយនឹងមានហេតុផងច្បាស់លាស់ដើម្បីធ្វើការកែ ប្រែវានឹង
+
+- Proxy vs Decorator: គេបែងចែកគ្នាទំាពីរនឹង តាមរយៈជេតណា
+
++ Proxy (control access): Client -> SecurityProxy -> RealPaymentService
+Proxy decides whether, when, or how access happens.
+
++ Decorator (it add the behavior): បើវាជាការបន្ថែមមុខងារ 
+
+Example: PaymentGateway -> RetryDecorator -> MetricsDecorator
+
+Summary:
+
+Decorator says: “Let me add behavior.”
+Proxy says: “You must go through me to reach the real object.”
+
+
