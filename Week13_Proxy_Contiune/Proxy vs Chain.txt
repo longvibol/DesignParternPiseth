@@ -1,0 +1,17 @@
+Proxy vs Chain
+
+
+- Chain : ធ្វើការងារតគ្នា នៅក្នុង steam api (. .  . )
+
+Chain:
+Request
+|
+Validation
+|
+Authentication
+|
+Authorization
+|
+Business
+
+

@@ -1,0 +1,14 @@
+Proxy vs Adapter
+
+- Adapter : intergrade from one department to another department យើងប្រាប់ប្រាស់វាដូចជាស្ពាន់ ដែលធ្វើការ convert ទៅ convert មក
+
+Our Interface -> Adapter -> Incompatible API
+
+Example:
+
+PaymentGateway -> AbaPaymentAdapter -> ABA SDK
+
+
+- Proxy: interface វាដូចគ្នា (គោលបំណង់ តើ Access បានអត់) Control access
+Same Interface -> Proxy -> Real Object
+

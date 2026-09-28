@@ -1,0 +1,108 @@
+Proxy : វាមានតួនាទី ជំនួស ឬ តំណាងសម្រាប់ Object 
+
+Proxy provides a substitute or representative for another object and controls
+access to it.
+
+- Example :
+
+We have client code want to access to real object តែយើងដាក់របាំងមួយនៅកណ្តាល Proxy 
+
+Client
+|
+Proxy
+|
+Real Object (Target Object) 
+
+-----------------------------------
+
+Suppose we have a document service:
+
+public interface DocumentService {
+	String readDocument(
+	String documentId
+);
+}
+
+យើងបោះ document id ចូល ហើយវា return object or content នឹងមកវិញ.
+
+យើងធ្វើតែចឹងទេរាល់ដល់ តែខាង business side want to have authorization, check the security first if the document not belong to the user can not open it. 
+user នឹងត្រូវធ្វើការ Login សិនបានអាចមើលទិន្នន័យនឹងបាន. 
+
+- we can update the code but if the requirement come up more how to do it . 
+
+Then more requirements arrive:
+Authorization
+Audit logging
+Caching
+Lazy loading
+Remote access
+Access statistics
+Rate limiting
+
+==> then the real service have many response 
+
+==Proxy Idea==
+
+Client
+|
+DocumentServiceProxy
+|
+RealDocumentService
+
+យើងអត់អោយ Client access directly te គេបង្កើត Proxy នៅកណ្តាល់
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

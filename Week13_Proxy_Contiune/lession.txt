@@ -1,0 +1,112 @@
+1- Vertual Proxy : គោលបំណងធ្វើការ Delay ការបង្កើត Object នឹង
+
+- Virtual Proxy delays creation of an expensive object. ប្រើសម្រាប់ការបង្កើត Object ដែលត្រូវការ ទំហំធំ
+
+Example: 
+
+Instantiate object :
+
+Image image =
+new HighResolutionImage(
+"hotel.jpg"
+);
+
+ចឹងពេលវាបើមកនឹង វាបង្កើត Object នឹងតែម្តង 
+
+
+2- Remote Proxy: service មួយ Call ទៅកាន់ service មួយទៀត អានឹងគេហៅថា Remote proxy 
+
+Booking Service -> Payment Service
+
+- service មួយ called to another service ( rest client, fiend client)
+- We use Webclient now
+
+-----------------------------------------------------------------------------------------------------
+
+Proxy Types:
+
+- Protection Proxy: Client -> Security Proxy -> Real Service : យើងដាក់ Proxy នៅកណ្តាល 
+- Virtual Proxy: Client -> Lazy Proxy -> Create Real Object When Needed: ការបង្កើត Object ដែលមាន expensive object creation , យើងធ្វើការបង្កើត
+Object ពេលដែលយើងត្រូវការប៉ុណ្តោះ។
+
+Example:
+
+Large image
+Large document
+Expensive resource: មានន័យថាវាឆ្លងកាត់ network
+
+- Remote Proxy: Represents an object in another process/server.
+
+Client -> Remote Proxy -> Network -> Remote Service
+
+Example: 
+
+REST client
+RPC
+gRPC stub
+Feign-style client
+
+- Caching Proxy: Avoids repeated access to expensive resources. 
+
+Client
+|
+Cache Proxy
+── HIT -> return
+── MISS -> Real Service
+
+- Logging / Monitoring Proxy: Controls access while recording calls
+
+Client -> Monitoring Proxy -> Real Service
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

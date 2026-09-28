@@ -1,0 +1,94 @@
+- ពេលដែលតម្រូវការថែ ទៅលើ Service របស់យើង មួយ ហើយ មួយទៀត វាធ្វើអោយកូដរបស់យើងមានការស្មុកស្មាន់ 
+
+RetryLoggedEncryptedEmailNotificationSender
+
+==> នាំអោយវា បង្កើតបានជា Inheritance Explosion :
+
+- ការសរសេរ កូដភាគច្រើនជាទូរទៅគេប្រើប្រាស់ composition over inheritance
+
+
+Decorator exists because sometimes we want to:
+Add responsibilities to an object dynamically without modifying the original class.
+
+==> ពេលយើងចង់ Add responsibility ថ្មី ទៅកាន់ object នឹងដោយមិនចាំបាច់ធ្វើការ modify the original class. 
+
+យើងមិនធ្វើការបង្កើត Class ទេយើងបង្កើតវាជា Decorator 
+
+Email
+── LoggedEmail
+── EncryptedEmail
+── RetryEmail
+── LoggedEncryptedEmail
+── RetryLoggedEncryptedEmail
+
+==> Composite 
+
+LoggingDecorator
+|
+RetryDecorator
+|
+EncryptionDecorator
+|
+EmailNotificationSender
+
+
+Every object implements the same interface: NotificationSender
+Therefore, the client still sees: sender.send(message);
+
+- យើងយក NotificationSender ធ្វើជា Interface ដែលអោយ LoggingDecorator ; RetryDecorator ; EncryptionDecorator implement from NotificationSender
+
+- មានន័យថាយើងធ្វើការ ខ្ចាប់វា Decorator wraps an object and adds behavior around it.
+
+ត្រូវចាំដោយសារតែវា Implement from one class ចឹងបានវាអាចជំនួសគ្នាបាន
+
+==> the ddecorator វាធ្វើការខ្ចាប់ លើ object នឹង
+
+------------------------------------------------------
+
+- Concrete Component ជាដំណោះស្រាយជាក់លាក់មួយ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
